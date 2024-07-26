@@ -60,14 +60,20 @@
 </template>
 <script setup>
 import Tag from './Tag';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useNoteStore } from '@/store/NoteStore';
 import { useNoteListStore } from '@/store/NoteListStore';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
 const tagValue = ref('');
 const noteStore = useNoteStore();
 const noteListStore = useNoteListStore();
 const dialog = ref(false);
+
+onMounted(() => {
+  showSaveBtn();
+})
 
 
 const validation = {
@@ -110,6 +116,13 @@ const validation = {
   }
 }
 
+function showSaveBtn() {
+  const currentPath = ref(route.path).value;
+  const saveBtn = document.querySelector('.saveBtn');
+  console.log(currentPath);
+
+  saveBtn.style.display = currentPath === '/note' ? 'flex' : 'none';
+}
 
 function makeTag() {
  let trimedTagValue = tagValue.value.trim();
@@ -156,6 +169,7 @@ function closeModal() {
     opacity: 0.8;
     color: blue;
     margin-right: 16px;
+    display: none;
 }
 
 .textArea {

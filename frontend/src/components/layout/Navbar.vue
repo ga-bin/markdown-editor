@@ -11,7 +11,6 @@ import DeleteButtonModal from '../note/DeleteButtonModal';
 import { useNoteStore } from '@/store/NoteStore';
 import { useNoteListStore } from '@/store/NoteListStore';
 
-
 const noteStore = useNoteStore();
 const noteListStore = useNoteListStore();
 const deleteBtnState = ref(false);
@@ -24,10 +23,6 @@ watch(() => noteStore.noteId, (newValue) => {
 
 async function insertNote() {
     noteStore.insertNote(noteListStore.getAllNote);
-}
-
-function deleteNote() {
-    console.log("hello world");
 }
 
 

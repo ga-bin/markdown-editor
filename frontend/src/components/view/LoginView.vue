@@ -1,15 +1,6 @@
-<template>
-    <div class="contentArea">
-
-    </div>
-</template>
+  <template>
+    <Login/>
+  </template>
 <script setup>
-
+import Login from '../user/Login';
 </script>
-<style scoped>
-.contentArea {
-  height: 100%;
-  width: 100%;
-  background-color: rgb(var(--v-theme-lightBeige));
-}
-</style>
